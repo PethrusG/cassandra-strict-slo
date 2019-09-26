@@ -11,5 +11,5 @@ When trying to ping from one host to another, the first ping always has a substa
 Consider if adding packet delay is benficial for later testing.
 Pinging switch to host always has a high delay, above 100 ms.
 
-Set bandwidth on links?
-Core pinning
+  * Set bandwidth on links?
+  * Core pinning
