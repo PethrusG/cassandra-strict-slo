@@ -1,0 +1,27 @@
+* Heading 1
+The main heading.
+** Heading 2
+The secondary heading.
+*** Heading 3
+The third heading.
+
+Let's introduce some text. Here is an unordered list:
+
+- Citrus fruits
+  + Lemons
+    * Limes
+  + Oranges
+- Apples
+
+Here is an ordered list:
+
+1) Gustav Vasa
+2) Karl XII
+3) Carl Gustaf XVI
+
+And a nice table:
+
+| Attribute   | Measurement 1 | Measurement 2 |
+|-------------+---------------+---------------|
+| attribute 1 |          0.58 |          0.60 |
+| attribute 2 |          0.78 | 0.30          |
