@@ -1,0 +1,3 @@
+* Summary of Workload Analysis of a Large-Scale Key-Value Store by Atikoglu et al.
+
+   Key-value stores are essential to many Internet applications. To enable an optimal design of such stores, it is necessary to analyze the workload patterns. In this paper, 284 billion requests during the course of 58 days from Facebook have been analyzed. One important finding is that the relation between GET and SET HTTP methods is 30:1, quite higher than traditionally predicted.
