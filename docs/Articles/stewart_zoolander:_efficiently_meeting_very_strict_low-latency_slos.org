@@ -1,0 +1,8 @@
+* Summary of Zoolander: Efﬁciently Meeting Very Strict, Low-Latency SLOs by Stewart et al.
+** Abstract
+
+   Requests from various Internet services are dependent on multiple networked storage accesses. Even if only one of these accesses suffer from high latency, the request as a whole will be affected by it. Zoolander is a key-value storage aimed at meeting strict Service Level Agreements (SLOs) and does so by means of /traditional replication/ as well as /replication for predictability/. The latter strategy issues an access to a multitude of nodes instead of just one as is the case in traditional replication. An analytical model decides which strategy is the most beneficial for a certain workload. When workloads under-utilize the system, replication for predictability is preferred whereas traditional scale-out replication is preferred in the case of heavy resources utilization.
+
+** Introduction
+
+   High tail latency can be costly to the industry. On average, a delay of more than 100 ms corresponds to a revenue decrease of 1 %. Using duplicate nodes to ensure that one of them responds on time is one of the main ideas behind the Zoolander key-value storage.
