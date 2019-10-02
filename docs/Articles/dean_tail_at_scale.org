@@ -1,0 +1,30 @@
+* Summary of "The Tail at Scale" by Dean and Barroso
+** Introduction
+Many web-based applications are dependent on low-latency responses, within 100 ms, to ensure a non-disruptive user experience. As systems scale both in size and complexity, the challenge of keeping latency low enough increases. A common approach for such applications is that one root request in turn issues a multitude of requests and if one of the responses has an unacceptable delay, it will affect the root request as well. Since a single request depends on the response from a multitude of servers, even a very low fraction of high-delay units can cause a substantial fraction of user request delays. Therefore, even if the fraction is low, mitigation of tail latency is very important. Moreover, high tail latency is made even more prominent on the service level since it strongly affects single users, even if a majority of users are unaffected. Let us briefly look at reasons for tail latency.
+*** Reasons for latency variability
+**** Shared resources
+Due to one machine being used for several purposes, a request may have to wait.
+**** Daemons
+Although small in usage in general, multiple daemons may take enough resources to cause delays.
+**** Maintenance activities
+**** Queuing
+The most common source of delays is queuing in the servers but network queues may also cause delays.
+**** Power limits
+**** Garbage collection
+**** Energy Management
+*** Reducing Component Variability
+**** Differentiating service classes and higher-level queuing
+**** Reducing head-of-line blocking
+**** Managing background activities
+*** How to cope with, rather than mitigate tail latency
+    As it turns out, it becomes too complex to completely reduce latency at an individual component level. Just as fault-tolerant systems aim to create a "predictable whole out of less-predictable parts", the aim when mitigating tail latency should be to create a system which as a whole mitigates tail-latency.
+*** Techniques for masking tail-latency
+    These can be divided into two categories: /within-request/ and /cross-request/. Within-request strategies aims to prevent individual requests from reaching unacceptable delays whereas cross-request strategies are intended to prevent long-term latency. Cross-request strategies are used on a more course-grained level, and aim to ensure that partitions of data are optimized to ensure the best possible load balancing.
+**** Within-request mitigation techniques
+***** Hedged requests
+Instead of issuing a request to one server only and wait for its response, a request is issued to several servers. Although such an approach would be very resource consuming if implemented in a naive manner, it is possible to heavily reduce tail-end latency while only using a small amount of additional resources. Typically, a delay before sending additional requests is introduced. A normal threshold for sending out more requests is set to a delay corresponding to the 95th percentile of the delay. With such settings, the 99.9th percentile tail latency in a Google data center was reduced from 1800 ms to 74 ms while only issuing 2 % additional requests.
+***** Tied requests
+The downside of hedged requests is that they only mitigate the highest tail latency. If a more overall improvement is desired, another strategy is needed. The most common reason for latency is queuing in the servers. The idea behind a tied request is to send a request to several servers and let the servers communicate to each other which one first handles the request. The server that handles the request will then cancel the requests of the other servers.
+**** Cross-request mitigation techniques
+** Questions
+** Problems with the article
