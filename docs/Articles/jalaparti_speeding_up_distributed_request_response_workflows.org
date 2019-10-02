@@ -1,0 +1,10 @@
+* Summary of Speeding up Distributed Request-Response Workﬂows by Jalaparti et al.
+** Abstract
+
+  Varying delays of interactive services at Bing are a result of request processing by means of parallelization, sequentially through several layers and aggregation of a multitude of sub-queries. To mitigate tail latency, three primary strategies are used:
+
+1) Re-issuing sub-queries
+2) Speeding up so called "laggards"
+3) Allow a certain amount of incompleteness in the final result.
+
+The results are promising: When 0.1 % of responses are allowed to contain partial results, the 99th percentile is decreased by 50 %. By reissuing only 5 % of requests, 25 % of services receive a 40 % reduction in tail latency.
